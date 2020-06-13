@@ -3,5 +3,6 @@
   "port": "3306",
   "driver": "mysql",
   "user": "admin",
-  "pass": "admin"
+  "pass": "admin",
+  "dbname": "achievements_blog"
 }

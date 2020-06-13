@@ -8,6 +8,7 @@ type DataBase struct {
 	Driver     string `json:"driver"`
 	User       string `json:"user"`
 	Pass       string `json:"pass"`
+	DBName     string `json:"dbname"`
 	Connection *sql.DB
 }
 
@@ -33,12 +34,3 @@ func (db *DataBase) CloseConnectionIfExists() error {
 
 	return nil
 }
-
-//var bd Connector = &DataBase {
-//	URL:    "123",
-//	driver: "123",
-//	User:   User {
-//		user: "123",
-//		pass: "123",
-//	},
-//}

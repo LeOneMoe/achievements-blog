@@ -1,20 +1,20 @@
-package model
+package models
 
 import "time"
 
 type User struct {
-	id        int64
-	nickName  string
-	firstName string
-	lastName  string
+	Id        int64
+	NickName  string
+	FirstName string
+	LastName  string
 }
 
 type Achievement struct {
 	id              int64
-	title           string
-	achievementText string
+	Title           string
+	AchievementText string
 	UTCdate         time.Time
-	authorID        int64
+	AuthorID        int64
 }
 
 type Like struct {

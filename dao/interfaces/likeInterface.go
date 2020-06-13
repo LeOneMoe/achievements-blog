@@ -1,9 +1,9 @@
 package interfaces
 
-import "github.com/LeOneMoe/go-gin-react-crud/model"
+import "github.com/LeOneMoe/go-gin-react-crud/models"
 
 type LikeDAO interface {
-	Create(m model.Like)
-	Read(m model.Like)
-	Delete(m model.Like)
+	Create(m models.Like)
+	Read(m models.Like)
+	Delete(m models.Like)
 }

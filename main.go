@@ -1,7 +1,9 @@
 package main
 
 import (
+	"github.com/LeOneMoe/go-gin-react-crud/dao/factories"
 	"github.com/LeOneMoe/go-gin-react-crud/handlers"
+	"github.com/LeOneMoe/go-gin-react-crud/models"
 	"github.com/LeOneMoe/go-gin-react-crud/utilities"
 	"github.com/gin-gonic/contrib/static"
 	"github.com/gin-gonic/gin"
@@ -9,15 +11,21 @@ import (
 )
 
 func main() {
-	db, err := utilities.GetConfiguration()
+	config, err := utilities.GetConfiguration()
 	if err != nil {
 		log.Fatal(err)
 		return
 	}
 
-	if err = db.GetConnection(); err != nil {
-		println(err)
+	userDAO := factories.FactoryDAO(config.Driver)
+
+	user := models.User{
+		NickName:  "LeOneMoe",
+		FirstName: "Oleg",
+		LastName:  "Vzukov",
 	}
+
+	err = userDAO.Create(&user)
 
 	r := gin.Default()
 	r.Use(static.Serve("/", static.LocalFile("./public", true)))
