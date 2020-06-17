@@ -1,4 +1,6 @@
-create table achievement
+create schema achievement_blog;
+
+create table achievement_blog.achievement
 (
     id              int auto_increment
         primary key,
@@ -8,7 +10,7 @@ create table achievement
     authorID        int  not null
 );
 
-create table user
+create table achievement_blog.user
 (
     id        int auto_increment
         primary key,
@@ -17,7 +19,7 @@ create table user
     lastName  text not null
 );
 
-create table comment
+create table achievement_blog.comment
 (
     id            int auto_increment
         primary key,
@@ -26,10 +28,19 @@ create table comment
     commentText   text not null
 );
 
-create table `like`
+create table achievement_blog.like
 (
     id            int auto_increment
         primary key,
     userID        int not null,
     achievementID int null
 );
+
+CREATE TRIGGER after_achievement_delete AFTER DELETE on achievement_blog.achievement
+    FOR EACH ROW
+BEGIN
+    DELETE FROM `like`
+    WHERE `like`.achievementID = old.id;
+    DELETE FROM comment
+    WHERE comment.achievementID = old.id;
+END

@@ -6,12 +6,12 @@ import (
 	"log"
 )
 
-func AchievementFactory(driver string) interfaces.AchievementDAO {
-	var i interfaces.AchievementDAO
+func CommentFactory(driver string) interfaces.CommentDAO {
+	var i interfaces.CommentDAO
 
 	switch driver {
 	case "mysql":
-		i = mysql.AchievementImplMysql{}
+		i = mysql.CommentImplMysql{}
 	default:
 		log.Fatal(driver)
 	}

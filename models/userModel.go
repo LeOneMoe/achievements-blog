@@ -3,14 +3,14 @@ package models
 import "time"
 
 type User struct {
-	Id        int64
+	ID        int64
 	NickName  string
 	FirstName string
 	LastName  string
 }
 
 type Achievement struct {
-	id              int64
+	ID              int64
 	Title           string
 	AchievementText string
 	UTCdate         time.Time
@@ -18,14 +18,14 @@ type Achievement struct {
 }
 
 type Like struct {
-	id            int64
-	userID        int64
-	achievementID int64
+	ID            int64
+	UserID        int64
+	AchievementID int64
 }
 
 type Comment struct {
-	id            int64
-	userID        int64
-	achievementID int64
-	commentText   string
+	ID            int64
+	UserID        int64
+	AchievementID int64
+	CommentText   string
 }

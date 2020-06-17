@@ -6,7 +6,7 @@ import (
 	"log"
 )
 
-func FactoryDAO(driver string) interfaces.UserDAO {
+func UserFactory(driver string) interfaces.UserDAO {
 	var i interfaces.UserDAO
 
 	switch driver {
