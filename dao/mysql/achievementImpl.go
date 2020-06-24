@@ -16,7 +16,7 @@ func (dao AchievementImplMysql) Create(a *models.Achievement) error {
 	}
 	defer stmt.Close()
 
-	result, err := stmt.Exec(a.Title, a.AchievementText, a.UTCdate, a.AuthorID)
+	result, err := stmt.Exec(a.Title, a.AchievementText, a.UTCDate, a.AuthorID)
 	if err != nil {
 		return err
 	}
@@ -41,7 +41,7 @@ func (dao AchievementImplMysql) Update(id int64, a *models.Achievement) error {
 	}
 	defer stmt.Close()
 
-	_, err = stmt.Exec(a.Title, a.AchievementText, a.UTCdate, a.AuthorID, id)
+	_, err = stmt.Exec(a.Title, a.AchievementText, a.UTCDate, a.AuthorID, id)
 	if err != nil {
 		return err
 	}
@@ -90,7 +90,7 @@ func (dao AchievementImplMysql) GetAll() ([]models.Achievement, error) {
 		err := rows.Scan(
 			&row.ID, &row.Title,
 			&row.AchievementText,
-			&row.UTCdate,
+			&row.UTCDate,
 			&row.AuthorID,
 		)
 		if err != nil {
@@ -125,7 +125,7 @@ func (dao AchievementImplMysql) GetByID(id int64) (models.Achievement, error) {
 		&achievement.ID,
 		&achievement.Title,
 		&achievement.AchievementText,
-		&achievement.UTCdate,
+		&achievement.UTCDate,
 		&achievement.AuthorID,
 	)
 	if err != nil {

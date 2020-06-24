@@ -2,35 +2,28 @@ package main
 
 import (
 	"github.com/LeOneMoe/go-gin-react-crud/handlers"
-	"github.com/gin-gonic/contrib/static"
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
-	//cfg, err := utilities.GetConfiguration()
-	//if err != nil {
-	//	log.Fatal(err)
-	//	return
-	//}
-	//
-	//userDAO := factories.UserFactory(cfg.Driver)
-
 	r := gin.Default()
-	r.Use(static.Serve("/", static.LocalFile("./public", true)))
+	// Don`t use this in prod!!!
+	r.Use(cors.Default())
 
-	standardAPI := r.Group("")
+	prodAPI := r.Group("/api")
 	{
-		standardAPI.GET("/ping", handlers.PostPingPong)
+		prodAPI.GET("/achievements", handlers.GetAllAchievements)
 	}
 
-	devAPI := r.Group("/dev")
-	{
-		devAPI.GET("/hi", func(c *gin.Context) {
-			c.JSON(200, gin.H{
-				"message": "hello world",
-			})
-		})
-	}
+	//devAPI := r.Group("/dev")
+	//{
+	//	devAPI.GET("/hi", func(c *gin.Context) {
+	//		c.JSON(200, gin.H{
+	//			"message": "hello world",
+	//		})
+	//	})
+	//}
 
 	if err := r.Run(); err != nil {
 		panic(err)
